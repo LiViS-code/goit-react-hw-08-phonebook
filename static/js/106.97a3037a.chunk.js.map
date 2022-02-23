@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/106.97a3037a.chunk.js","mappings":"iMAAe,SAASA,IACtB,OAAO","sources":["components/LogOutPage/LogOutPage.jsx"],"sourcesContent":["export default function LogOutPage() {\n  return <p>Log Out</p>\n};\n"],"names":["LogOutPage"],"sourceRoot":""}

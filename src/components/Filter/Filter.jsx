@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { FcFilledFilter } from "react-icons/fc";
 import { Container } from "./Filter.styled";
-import { Input, Label } from "../ContactForm/ContactForm.styled";
+import { Input, Label } from "../Forms/Forms.styled";
 
 export default function Filter({ onFilter, filter }) {
   const handleInput = (e) => {

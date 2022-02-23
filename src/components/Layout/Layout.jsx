@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Navigation from "components/Navigation/Navigation";
 import { Header, Footer, Main, Title, Logo, Container } from "./Layout.styled";
-import phonebook from '../../img/phonebook.png';
+import phonebook from 'img/phonebook.png';
 
 export default function Layout() {
   return (

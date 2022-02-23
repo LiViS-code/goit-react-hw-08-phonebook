@@ -1,8 +1,8 @@
 import { ContactsTitle, Message } from "./ContactsPage.styled";
-import ContactForm from '../../components/ContactForm/ContactForm';
-import ContactList from '../../components/ContactList/ContactList';
-import Loader from '../../components/Loader/Loader';
-import Filter from '../../components/Filter/Filter';
+import ContactForm from 'components/Forms/ContactForm/ContactForm';
+import ContactList from 'components/ContactList/ContactList';
+import Loader from 'components/Loader/Loader';
+import Filter from 'components/Filter/Filter';
 
 
 

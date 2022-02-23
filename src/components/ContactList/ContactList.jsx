@@ -7,7 +7,7 @@ import {
   ContactNote,
   Link,
 } from './ContactList.styled';
-import { Button } from '../ContactForm/ContactForm.styled';
+import { Button } from '../Forms/Forms.styled';
 
 export default function ContactList({ contacts, filter, onDelete }) {
   let filterContacts = contacts;

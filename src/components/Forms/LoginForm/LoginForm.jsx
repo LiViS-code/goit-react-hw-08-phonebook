@@ -1,4 +1,4 @@
-import { Form, Input, Label, Button } from "components/ContactForm/ContactForm.styled";
+import { Form, Input, Label, Button } from "../Forms.styled";
 
 export default function LoginForm() {
   return (

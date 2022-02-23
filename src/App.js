@@ -2,7 +2,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import HomePage from 'components/HomePage/HomePage';
+import HomePage from 'Pages/HomePage/HomePage';
 // import ContactForm from './components/ContactForm/ContactForm';
 // import ContactList from './components/ContactList/ContactList';
 // import Filter from './components/Filter/Filter';
@@ -18,14 +18,10 @@ import HomePage from 'components/HomePage/HomePage';
 
 export default function App() {
   const Layout = lazy(() => import('./components/Layout/Layout'));
-  const LoginPage = lazy(() => import('components/LoginPage/LoginPage'));
-  const RegisterPage = lazy(() =>
-    import('components/RegisterPage/RegisterPage')
-  );
-  const ContactsPage = lazy(() =>
-    import('components/ContactsPage/ContactsPage')
-  );
-  const LogOutPage = lazy(() => import('components/LogOutPage/LogOutPage'));
+  const LoginPage = lazy(() => import('Pages/LoginPage/LoginPage'));
+  const RegisterPage = lazy(() => import('Pages/RegisterPage/RegisterPage'));
+  const ContactsPage = lazy(() => import('Pages/ContactsPage/ContactsPage'));
+  const LogOutPage = lazy(() => import('Pages/LogOutPage/LogOutPage'));
 
   // const dispatch = useDispatch();
   // const { contacts, loading, filter } = useSelector(

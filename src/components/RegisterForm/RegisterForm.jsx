@@ -1,16 +1,18 @@
+import { Form, Input, Label, Button } from "components/ContactForm/ContactForm.styled";
+
 export default function RegisterForm() {
   return (
-    <form>
-      <label htmlFor="login">Login</label>
-      <input type="text" name="login" placeholder="Enter login" />
+    <Form>
+      <Label htmlFor="login">Login</Label>
+      <Input type="text" name="login" placeholder="Enter login" />
 
-      <label htmlFor="password">Password</label>
-      <input type="text" name="password" placeholder="Enter password" />
+      <Label htmlFor="password">Password</Label>
+      <Input type="text" name="password" placeholder="Enter password" />
     
-      <label htmlFor="confirmPassword">Confirm Password</label>
-      <input type="text" name="confirmPassword" placeholder="Confirm password" />
+      <Label htmlFor="confirmPassword">Confirm Password</Label>
+      <Input type="text" name="confirmPassword" placeholder="Confirm password" />
 
-      <button type="button">Sign Up</button>
-  </form>
+      <Button type="button">Sign Up</Button>
+  </Form>
   )
 };

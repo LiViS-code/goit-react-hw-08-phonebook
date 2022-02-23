@@ -1,13 +1,15 @@
+import { Form, Input, Label, Button } from "components/ContactForm/ContactForm.styled";
+
 export default function LoginForm() {
   return (
-    <form>
-      <label htmlFor="login">Login</label>
-      <input type="text" name="Login" placeholder='input login' />
+    <Form>
+      <Label htmlFor="login">Login</Label>
+      <Input type="text" name="Login" placeholder='input login' />
       
-      <label htmlFor="password">Password</label>
-      <input type="text" name="password" placeholder="input password" />
+      <Label htmlFor="password">Password</Label>
+      <Input type="text" name="password" placeholder="input password" />
 
-      <button type="button">Log In</button>
-    </form>
+      <Button type="button">Log In</Button>
+    </Form>
   )
 };

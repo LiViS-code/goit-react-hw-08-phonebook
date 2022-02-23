@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ToastContainer } from "react-toastify";
 import { IconContext } from "react-icons";
 import { FcContacts, FcPhoneAndroid, FcAddDatabase } from "react-icons/fc";
-import { FormContacts, Label, Input, Button } from "./ContactForm.styled";
+import { Form, Label, Input, Button } from "./ContactForm.styled";
 
 export default function ContactForm({ onChangeState }) {
   const [name, setName] = useState("");
@@ -34,7 +34,7 @@ export default function ContactForm({ onChangeState }) {
   };
 
   return (
-    <FormContacts onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Label htmlFor="inputName">
         <FcContacts />
         Name
@@ -81,7 +81,7 @@ export default function ContactForm({ onChangeState }) {
         </IconContext.Provider>
       </Button>
       <ToastContainer />
-    </FormContacts>
+    </Form>
   );
 }
 

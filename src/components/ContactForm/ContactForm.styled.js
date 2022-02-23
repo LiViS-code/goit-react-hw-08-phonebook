@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../constants/Theme";
+import styled from 'styled-components';
+import { theme } from '../../constants/Theme';
 
 const {
   colors: {
@@ -15,9 +15,10 @@ const {
   spacing,
 } = theme;
 
-export const FormContacts = styled.form`
-  width: 90%;
-  margin-bottom: ${spacing(4)};
+export const Form = styled.form`
+  min-width: 300px;
+  max-width: 500px;
+  margin: 0 auto ${spacing(4)};
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -38,7 +39,7 @@ export const Input = styled.input`
   border-radius: ${spacing(2)};
   transition: outline ${timing} ${timingFunction};
 
-  &[name="number"] {
+  &[name='number'] {
     margin-bottom: ${spacing(8)};
   }
 

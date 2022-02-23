@@ -1,5 +1,27 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getContacts, addContact, removeContact } from './api/requests';
+import {
+  getContacts,
+  addContact,
+  removeContact,
+  signUp,
+  logIn,
+  logOut,
+} from './api/requests';
+
+export const signUpThunk = createAsyncThunk('users/signup', async () => {
+  const result = await signUp();
+  return result.data;
+});
+
+export const logInThunk = createAsyncThunk('users/signup', async () => {
+  const result = await logIn();
+  return result.data;
+});
+
+export const logOutThunk = createAsyncThunk('users/signup', async () => {
+  const result = await logOut();
+  return result.data;
+});
 
 export const fetchContacts = createAsyncThunk(
   'contacts/getContacts',

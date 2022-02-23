@@ -1,4 +1,3 @@
-// import { FcTouchscreenSmartphone } from 'react-icons/fc';
 import { http } from './http-common';
 
 export const signUp = () => {

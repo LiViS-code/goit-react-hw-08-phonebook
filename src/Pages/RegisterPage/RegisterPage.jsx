@@ -1,9 +1,14 @@
+import PropTypes from "prop-types";
 import RegisterForm from "components/Forms/RegisterForm/RegisterForm";
-
-export default function RegisterPage() {
+export default function RegisterPage({onRegisterUsr}) {
+  
   return (
     <>
       <h2>Registration</h2>
-      <RegisterForm />
+      <RegisterForm onRegisterUsr={onRegisterUsr}/>
     </>)
 };
+
+RegisterPage.propTypes = {
+  onRegisterUsr: PropTypes.func.isRequired,
+}

@@ -24,6 +24,12 @@ export default function LoginForm({onLoginUsr}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onLoginUsr(login, password);
+    clearForm();
+  }
+
+  const clearForm = () => {
+    setLogin("");
+    setPassword("");
   }
 
   return (

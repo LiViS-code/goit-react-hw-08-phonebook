@@ -1,8 +1,14 @@
-// import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  useDispatch,
+  // useSelector,
+  // shallowEqual
+} from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
 import HomePage from 'Pages/HomePage/HomePage';
+import { signUpThunk } from 'redux/asyncThunks';
+
 // import ContactForm from './components/ContactForm/ContactForm';
 // import ContactList from './components/ContactList/ContactList';
 // import Filter from './components/Filter/Filter';
@@ -23,7 +29,22 @@ export default function App() {
   const ContactsPage = lazy(() => import('Pages/ContactsPage/ContactsPage'));
   const LogOutPage = lazy(() => import('Pages/LogOutPage/LogOutPage'));
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  const onLoginUsr = (name, password) => {
+    console.log('user login:', name, 'password:', password);
+  };
+
+  const onRegisterUsr = (name, eMail, password) => {
+    const userData = {
+      name: name,
+      email: eMail,
+      password: password,
+    };
+    dispatch(signUpThunk(userData));
+    // console.log('userData:', userData);
+  };
+
   // const { contacts, loading, filter } = useSelector(
   //   state => state.phonebook,
   //   shallowEqual
@@ -75,8 +96,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="login" element={<LoginPage />}></Route>
-          <Route path="register" element={<RegisterPage />}></Route>
+          <Route
+            path="login"
+            element={<LoginPage onLoginUsr={onLoginUsr} />}
+          ></Route>
+          <Route
+            path="register"
+            element={<RegisterPage onRegisterUsr={onRegisterUsr} />}
+          ></Route>
           <Route path="contacts" element={<ContactsPage />}></Route>
           <Route path="logout" element={<LogOutPage />}></Route>
         </Route>

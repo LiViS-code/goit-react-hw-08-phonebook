@@ -1,6 +1,6 @@
 import {
   useDispatch,
-  useSelector,
+  // useSelector,
   // shallowEqual
 } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
@@ -17,7 +17,7 @@ import { logInThunk, signUpThunk } from 'redux/asyncThunks';
 // import phonebook from './img/phonebook.png';
 // import { addNewContact, fetchContacts, deleteContact } from 'redux/asyncThunks';
 // import { setFilter } from 'redux/contactSlices';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // import { nanoid } from '@reduxjs/toolkit';
 
 // import Loader from 'components/Loader/Loader';
@@ -39,9 +39,8 @@ export default function App() {
     dispatch(signUpThunk({ name, email, password }));
   };
 
-  const isLoggedIn = useSelector(state => state.isLoggedIn);
-
-  useEffect(() => {}, []);
+  // const isLoggedIn = useSelector(state => state.isLoggedIn);
+  // useEffect(() => {}, []);
 
   // const { contacts, loading, filter } = useSelector(
   //   state => state.phonebook,

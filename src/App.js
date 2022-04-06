@@ -35,11 +35,11 @@ export default function App() {
     console.log('user login:', name, 'password:', password);
   };
 
-  const onRegisterUsr = (name, eMail, password) => {
+  const onRegisterUsr = (name, email, password) => {
     const userData = {
-      name: name,
-      email: eMail,
-      password: password,
+      name,
+      email,
+      password,
     };
     dispatch(signUpThunk(userData));
     // console.log('userData:', userData);

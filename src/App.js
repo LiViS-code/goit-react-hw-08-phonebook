@@ -7,7 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from 'Pages/HomePage/HomePage';
-import { signUpThunk } from 'redux/asyncThunks';
+import { logInThunk, signUpThunk } from 'redux/asyncThunks';
 
 // import ContactForm from './components/ContactForm/ContactForm';
 // import ContactList from './components/ContactList/ContactList';
@@ -31,17 +31,12 @@ export default function App() {
 
   const dispatch = useDispatch();
 
-  const onLoginUsr = (name, password) => {
-    console.log('user login:', name, 'password:', password);
+  const onLoginUsr = (email, password) => {
+    dispatch(logInThunk({ email, password }));
   };
 
   const onRegisterUsr = (name, email, password) => {
-    const userData = {
-      name,
-      email,
-      password,
-    };
-    dispatch(signUpThunk(userData));
+    dispatch(signUpThunk({ name, email, password }));
   };
 
   // const { contacts, loading, filter } = useSelector(

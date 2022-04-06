@@ -5,8 +5,8 @@ export const signUp = credentials => {
   return http.post('/users/signup', credentials);
 };
 
-export const logIn = () => {
-  return http.post('/users/login');
+export const logIn = credentials => {
+  return http.post('/users/login', credentials);
 };
 
 export const logOut = () => {

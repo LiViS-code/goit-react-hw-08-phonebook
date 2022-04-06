@@ -16,10 +16,13 @@ export const signUpThunk = createAsyncThunk(
   }
 );
 
-export const logInThunk = createAsyncThunk('/users/signup', async () => {
-  const result = await logIn();
-  return result.data;
-});
+export const logInThunk = createAsyncThunk(
+  '/users/signup',
+  async credentials => {
+    const result = await logIn(credentials);
+    return result.data;
+  }
+);
 
 export const logOutThunk = createAsyncThunk('/users/signup', async () => {
   const result = await logOut();

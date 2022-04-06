@@ -14,10 +14,18 @@ const authSlice = createSlice({
     [signUpThunk.fulfilled]: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = action.payload.isLoggedIn;
+      state.isLoggedIn = true;
     },
-    [logInThunk.fulfilled]: (state, action) => {},
-    [logOutThunk.fulfilled]: (state, action) => {},
+    [logInThunk.fulfilled]: (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [logOutThunk.fulfilled]: (state, action) => {
+      // state.user = {name: null, email: null};
+      // state.token = null;
+      // state.isLoggedIn = false;
+    },
   },
 });
 

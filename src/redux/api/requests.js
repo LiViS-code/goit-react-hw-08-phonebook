@@ -1,7 +1,6 @@
 import { http } from './http-common';
 
 export const signUp = credentials => {
-  console.log(credentials);
   return http.post('/users/signup', credentials);
 };
 

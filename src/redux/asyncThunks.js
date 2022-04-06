@@ -11,16 +11,16 @@ import {
 export const signUpThunk = createAsyncThunk(
   '/users/signup',
   async credentials => {
-    const result = await signUp(credentials);
-    return result.data;
+    const { data } = await signUp(credentials);
+    return data;
   }
 );
 
 export const logInThunk = createAsyncThunk(
-  '/users/signup',
+  '/users/login',
   async credentials => {
-    const result = await logIn(credentials);
-    return result.data;
+    const { data } = await logIn(credentials);
+    return data;
   }
 );
 

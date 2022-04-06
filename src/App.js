@@ -42,7 +42,6 @@ export default function App() {
       password,
     };
     dispatch(signUpThunk(userData));
-    // console.log('userData:', userData);
   };
 
   // const { contacts, loading, filter } = useSelector(

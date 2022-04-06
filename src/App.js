@@ -39,6 +39,8 @@ export default function App() {
     dispatch(signUpThunk({ name, email, password }));
   };
 
+  const isLoggedIn = useSelector(state => state.isLoggedIn);
+
   useEffect(() => {}, []);
 
   // const { contacts, loading, filter } = useSelector(

@@ -14,7 +14,7 @@ export const logOut = () => {
 };
 
 export const getUserCurrent = () => {
-  return http.get('/users/current');
+  return axios.get('/users/current');
 };
 
 export const getContacts = () => {

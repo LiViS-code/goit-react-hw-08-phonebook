@@ -7,6 +7,7 @@ import {
   signUp,
   logIn,
   logOut,
+  getUserCurrent,
 } from './api/requests';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -42,6 +43,26 @@ export const logOutThunk = createAsyncThunk('/users/logout', async () => {
   token.unset();
   return;
 });
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.authUser.token;
+
+    if (persistedToken === null) {
+      console.log('Токена нет, уходим из fetchCurrentUser');
+      return thunkAPI.rejectWithValue();
+    }
+    token.set(persistedToken);
+    try {
+      const { data } = await getUserCurrent();
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  }
+);
 
 export const fetchContacts = createAsyncThunk(
   '/contacts/getContacts',

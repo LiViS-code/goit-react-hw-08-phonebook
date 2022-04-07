@@ -38,9 +38,9 @@ export const logInThunk = createAsyncThunk(
 );
 
 export const logOutThunk = createAsyncThunk('/users/logout', async () => {
-  const { data } = await logOut();
+  await logOut();
   token.unset();
-  return data;
+  return;
 });
 
 export const fetchContacts = createAsyncThunk(

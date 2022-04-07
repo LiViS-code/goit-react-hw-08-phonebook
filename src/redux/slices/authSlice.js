@@ -23,7 +23,11 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
 
-    [logOutThunk.fulfilled]: () => {},
+    [logOutThunk.fulfilled]: (state, action) => {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
   },
 });
 

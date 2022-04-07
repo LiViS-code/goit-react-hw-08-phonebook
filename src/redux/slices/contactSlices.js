@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addNewContact, fetchContacts, deleteContact } from './asyncThunks';
+import { addNewContact, fetchContacts, deleteContact } from '../asyncThunks';
 
 export const contactsSlice = createSlice({
   name: 'phonebook',

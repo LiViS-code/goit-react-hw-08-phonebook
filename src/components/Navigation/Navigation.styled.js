@@ -51,3 +51,9 @@ export const NavigationLink = styled(NavLink)`
     outline-offset: ${spacing(0.5)};
   }
 `;
+
+export const WelcomeUser = styled.span`
+  margin-left: ${spacing(12)};
+  margin-right: ${spacing(2)};
+  font-style: italic;
+`;

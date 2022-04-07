@@ -34,8 +34,8 @@ export default function LoginForm({onLoginUsr}) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Label htmlFor="login">Name</Label>
-      <Input type="text" name="login" value={login} placeholder="Enter login" required onChange={handleInput}/>
+      <Label htmlFor="login">Login</Label>
+      <Input type="text" name="login" value={login} placeholder="Enter E-Mail" required onChange={handleInput}/>
       
       <Label htmlFor="password">Password</Label>
       <Input type="password" name="password" value={password} placeholder="Enter password" required onChange={handleInput}/>

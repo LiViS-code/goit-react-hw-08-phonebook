@@ -27,7 +27,6 @@ export default function App() {
   const LoginPage = lazy(() => import('Pages/LoginPage/LoginPage'));
   const RegisterPage = lazy(() => import('Pages/RegisterPage/RegisterPage'));
   const ContactsPage = lazy(() => import('Pages/ContactsPage/ContactsPage'));
-  const LogOutPage = lazy(() => import('Pages/LogOutPage/LogOutPage'));
 
   const dispatch = useDispatch();
 
@@ -39,7 +38,7 @@ export default function App() {
     dispatch(signUpThunk({ name, email, password }));
   };
 
-  // const isLoggedIn = useSelector(state => state.isLoggedIn);
+  // const isLoggedIn = useSelector(state => state.authUser.isLoggedIn);
   // useEffect(() => {}, []);
 
   // const { contacts, loading, filter } = useSelector(
@@ -102,7 +101,6 @@ export default function App() {
             element={<RegisterPage onRegisterUsr={onRegisterUsr} />}
           ></Route>
           <Route path="contacts" element={<ContactsPage />}></Route>
-          <Route path="logout" element={<LogOutPage />}></Route>
         </Route>
       </Routes>
     </Suspense>

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import {
   getContacts,
   addContact,
@@ -8,10 +9,20 @@ import {
   logOut,
 } from './api/requests';
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 export const signUpThunk = createAsyncThunk(
   '/users/signup',
   async credentials => {
     const { data } = await signUp(credentials);
+    token.set(data.token);
     return data;
   }
 );
@@ -20,13 +31,15 @@ export const logInThunk = createAsyncThunk(
   '/users/login',
   async credentials => {
     const { data } = await logIn(credentials);
+    token.set(data.token);
     return data;
   }
 );
 
-export const logOutThunk = createAsyncThunk('/users/signup', async () => {
-  const result = await logOut();
-  return result.data;
+export const logOutThunk = createAsyncThunk('/users/logout', async () => {
+  const { data } = await logOut();
+  token.unset();
+  return data;
 });
 
 export const fetchContacts = createAsyncThunk(

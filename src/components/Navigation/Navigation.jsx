@@ -1,6 +1,16 @@
-import { Nav, NavigationLink, NavList, ListItem } from "./Navigation.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { Nav, NavigationLink, NavList, ListItem, WelcomeUser } from "./Navigation.styled";
+import { Button } from "components/Forms/Forms.styled";
+import authSelectors from "redux/authSelector";
+import { logOutThunk } from "redux/asyncThunks";
 
-export default function Navigation(isLoggedIn) {
+export default function Navigation() {
+  const dispatch = useDispatch;
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const userName = useSelector(authSelectors.getUserName);
+  const logOutUsr = () => {
+    dispatch(logOutThunk());
+  }
   return (
     <Nav>
       <NavList>
@@ -8,7 +18,7 @@ export default function Navigation(isLoggedIn) {
           <NavigationLink to="/">Home</NavigationLink>
         </ListItem>
 
-        {isLoggedIn ?
+        {!isLoggedIn ?
           <>
           <ListItem>
             <NavigationLink to="/login">Login</NavigationLink>
@@ -25,11 +35,10 @@ export default function Navigation(isLoggedIn) {
           </ListItem>
 
           <ListItem>
-            <NavigationLink to="/logout">Log Out</NavigationLink>
+            <WelcomeUser>Welcome, {userName} </WelcomeUser><Button onClick={logOutUsr}>Log Out</Button>
           </ListItem>
         </>
         }
-        
       </NavList>
     </Nav>
   );

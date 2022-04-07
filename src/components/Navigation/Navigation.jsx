@@ -5,7 +5,7 @@ import authSelectors from "redux/authSelector";
 import { logOutThunk } from "redux/asyncThunks";
 
 export default function Navigation() {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userName = useSelector(authSelectors.getUserName);
   const logOutUsr = () => {

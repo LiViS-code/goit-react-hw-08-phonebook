@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { http } from './http-common';
 
 export const signUp = credentials => {
@@ -9,7 +10,7 @@ export const logIn = credentials => {
 };
 
 export const logOut = () => {
-  return http.post('/users/logout');
+  return axios.post('/users/logout');
 };
 
 export const getUserCurrent = () => {

@@ -18,17 +18,17 @@ export const getUserCurrent = () => {
 };
 
 export const getContacts = () => {
-  return http.get('/contacts');
+  return axios.get('/contacts');
 };
 
 export const addContact = data => {
-  return http.post('/contacts', data);
+  return axios.post('/contacts', data);
 };
 
 export const removeContact = id => {
-  return http.delete(`/contacts/${id}`);
+  return axios.delete(`/contacts/${id}`);
 };
 
 export const patchContact = id => {
-  return http.patch(`/contacts/${id}`);
+  return axios.patch(`/contacts/${id}`);
 };

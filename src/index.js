@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { store, persistor } from './redux/store';
 import { IconContext } from 'react-icons';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './constants/Theme';
 import App from './App';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +20,9 @@ ReactDOM.render(
           }}
         >
           <Provider store={store}>
-            <App />
+            <PersistGate loading={null} persistor={persistor}>
+              <App />
+            </PersistGate>
           </Provider>
         </IconContext.Provider>
       </ThemeProvider>

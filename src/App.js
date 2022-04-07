@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import HomePage from 'Pages/HomePage/HomePage';
-import { logInThunk, signUpThunk } from 'redux/asyncThunks';
+import { fetchCurrentUser, logInThunk, signUpThunk } from 'redux/asyncThunks';
 
 export default function App() {
   const Layout = lazy(() => import('./components/Layout/Layout'));
@@ -20,6 +20,10 @@ export default function App() {
   const onRegisterUsr = (name, email, password) => {
     dispatch(signUpThunk({ name, email, password }));
   };
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

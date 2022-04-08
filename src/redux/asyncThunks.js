@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toastMsg from 'utils/toastMsg';
 import {
   getContacts,
   addContact,
@@ -22,27 +23,46 @@ const token = {
 
 export const signUpThunk = createAsyncThunk(
   '/users/signup',
-  async credentials => {
-    const { data } = await signUp(credentials);
-    token.set(data.token);
-    return data;
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await signUp(credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue();
+    }
   }
 );
 
 export const logInThunk = createAsyncThunk(
   '/users/login',
-  async credentials => {
-    const { data } = await logIn(credentials);
-    token.set(data.token);
-    return data;
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await logIn(credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      toastMsg('Authorisation Error', 'warn');
+      console.log(error);
+      return thunkAPI.rejectWithValue();
+    }
   }
 );
 
-export const logOutThunk = createAsyncThunk('/users/logout', async () => {
-  await logOut();
-  token.unset();
-  return;
-});
+export const logOutThunk = createAsyncThunk(
+  '/users/logout',
+  async (_, thunkAPI) => {
+    try {
+      await logOut();
+      token.unset();
+      return;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
 
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
@@ -51,7 +71,6 @@ export const fetchCurrentUser = createAsyncThunk(
     const persistedToken = state.authUser.token;
 
     if (persistedToken === null) {
-      console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue();
     }
     token.set(persistedToken);
@@ -59,7 +78,8 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await getUserCurrent();
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
+      console.log(error);
+      return thunkAPI.rejectWithValue();
     }
   }
 );

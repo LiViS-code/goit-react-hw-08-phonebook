@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
-import 'react-toastify/dist/ReactToastify.css';
+import PrivateRoute from './components/PrivateRoute';
 import HomePage from 'Pages/HomePage/HomePage';
 import { fetchCurrentUser, logInThunk, signUpThunk } from 'redux/asyncThunks';
+import PublicRoute from 'components/PublicRoute';
 
 export default function App() {
   const Layout = lazy(() => import('./components/Layout/Layout'));
@@ -29,16 +30,38 @@ export default function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<HomePage />}></Route>
+          <Route
+            path="/"
+            element={
+              <PublicRoute>
+                <HomePage />
+              </PublicRoute>
+            }
+          ></Route>
           <Route
             path="login"
-            element={<LoginPage onLoginUsr={onLoginUsr} />}
+            element={
+              <PublicRoute restricted>
+                <LoginPage onLoginUsr={onLoginUsr} />
+              </PublicRoute>
+            }
           ></Route>
           <Route
             path="register"
-            element={<RegisterPage onRegisterUsr={onRegisterUsr} />}
+            element={
+              <PublicRoute restricted>
+                <RegisterPage onRegisterUsr={onRegisterUsr} />
+              </PublicRoute>
+            }
           ></Route>
-          <Route path="contacts" element={<ContactsPage />}></Route>
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          ></Route>
         </Route>
       </Routes>
     </Suspense>

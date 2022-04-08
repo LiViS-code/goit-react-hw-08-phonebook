@@ -1,16 +1,20 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const toastMsg = (name, type) => {
-  let msg = "";
+  let msg = '';
   switch (type) {
-    case "success":
+    case 'success':
       msg = `${name} was successfully added to contacts`;
       break;
-    case "warn":
-      msg = `${name} is alredy in contacts`;
+    case 'warn':
+      if (name === 'Authorisation Error') {
+        msg = `${name}. Check if the data is correct.`;
+      } else {
+        msg = `${name} is alredy in contacts`;
+      }
       break;
-    case "info":
+    case 'info':
       msg = `${name} removed from contacts`;
       break;
     default:
@@ -18,7 +22,7 @@ const toastMsg = (name, type) => {
   }
 
   toast[type](msg, {
-    position: "top-right",
+    position: 'top-right',
     autoClose: 3000,
     hideProgressBar: false,
     closeOnClick: true,

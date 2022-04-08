@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Overlay, Modal } from "./Modal.styled";
-import { Form, Label, Input, Button } from "components/Forms/Forms.styled";
+import { Form, Input, Button } from "components/Forms/Forms.styled";
 
 export default function ModalWindow({contactEdit, onSaveEdit}) {
   const [name, setName] = useState(contactEdit.name);

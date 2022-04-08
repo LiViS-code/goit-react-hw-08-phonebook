@@ -99,7 +99,7 @@ export default function ContactsPage() {
       )}
     </>
       )}
-      {!showModal && <ModalWindow contactEdit={contactEdit} onSaveEdit={onSaveEdit}/> }
+      {!showModal && <ModalWindow contactEdit={contactEdit} onSaveEdit={onSaveEdit} toggleModal={toggleModal}/> }
 </>
   )
 };

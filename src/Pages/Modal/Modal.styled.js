@@ -20,5 +20,5 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${overlayColor};
-  z-index: 100;
+  z-index: 5;
 `;

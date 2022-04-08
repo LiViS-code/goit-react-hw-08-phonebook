@@ -1,8 +1,9 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import { Overlay, Modal } from "./Modal.styled";
 import { Form, Label, Input, Button } from "components/Forms/Forms.styled";
 
-export default function ModalWindow({contactEdit, onSaveEdit}) {
+export default function ModalWindow({contactEdit, onSaveEdit, toggleModal}) {
   const [name, setName] = useState(contactEdit.name);
   const [number, setNumber] = useState(contactEdit.number);
 
@@ -25,8 +26,18 @@ export default function ModalWindow({contactEdit, onSaveEdit}) {
     onSaveEdit(contactEdit.id, name, number);
   };
 
+  const onHandleCancel = () => {
+    toggleModal();
+  }
+
+  const closeModal = (e) => {
+    if (e.target.tagName === "DIV") {
+      toggleModal();
+    }
+  }
+
   return (
-    <Overlay>
+    <Overlay onClick={closeModal}>
       <Modal>
         <Form>
           <Label htmlFor="name">Name</Label>
@@ -42,9 +53,16 @@ export default function ModalWindow({contactEdit, onSaveEdit}) {
                   value={number}
                   onChange={handleInput}>
           </Input>
-          <Button type="submit" onClick={onHandleSubmit}>Save Changes</Button>    
+          <Button type="submit" onClick={onHandleSubmit}>Save Changes</Button> 
+          <Button type="button" data-action="cancel" onClick={onHandleCancel}>Cancel</Button>
           </Form>
       </Modal>
     </Overlay>
   );
+}
+
+ModalWindow.propTypes = {
+  contactEdit: PropTypes.object.isRequired,
+  onSaveEdit: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 }

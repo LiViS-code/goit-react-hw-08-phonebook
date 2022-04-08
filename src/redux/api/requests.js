@@ -25,10 +25,10 @@ export const addContact = data => {
   return axios.post('/contacts', data);
 };
 
-export const removeContact = id => {
-  return axios.delete(`/contacts/${id}`);
+export const removeContact = contactId => {
+  return axios.delete(`/contacts/${contactId}`);
 };
 
-export const patchContact = id => {
-  return axios.patch(`/contacts/${id}`);
+export const patchContact = (id, name, number) => {
+  return axios.patch(`/contacts/${id}`, { name, number });
 };

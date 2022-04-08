@@ -1,16 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ContactsTitle, Message } from "./ContactsPage.styled";
 import ContactForm from 'components/Forms/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Loader from 'components/Loader/Loader';
 import Filter from 'components/Filter/Filter';
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { addNewContact, fetchContacts, deleteContact } from "redux/asyncThunks";
+import { addNewContact, fetchContacts, deleteContact, editContact } from "redux/asyncThunks";
 import toastMsg from "utils/toastMsg";
 import { setFilter } from 'redux/slices/contactSlices';
+import ModalWindow from "Pages/Modal/Modal";
 
 
 export default function ContactsPage() {
+
+  const [showModal, setShowModal] = useState("false");
+  const [contactEdit, setContactEdit] = useState({});
 
   const dispatch = useDispatch();
 
@@ -60,6 +64,16 @@ export default function ContactsPage() {
     dispatch(setFilter(word));
   };
 
+  const onSaveEdit = (id, name, number) => {
+    dispatch(editContact({id, name, number}));
+    setShowModal(showModal => !showModal);
+  }
+
+  const toggleModal = (id=null, name=null, number=null) => {
+    setContactEdit({ id, name, number });
+    setShowModal(showModal => !showModal);
+  }
+
   return (
     <>
       <ContactForm onChangeState={onChangeState} />
@@ -76,14 +90,16 @@ export default function ContactsPage() {
           <ContactList
             contacts={contacts}
             filter={filter}
-            onDelete={onDelete}
+                  onDelete={onDelete}
+                  toggleModal={toggleModal}
           />
         </>
       ) : (
         <Message>You have no saved contacts</Message>
       )}
     </>
-  )}
+      )}
+      {!showModal && <ModalWindow contactEdit={contactEdit} onSaveEdit={onSaveEdit}/> }
 </>
   )
 };

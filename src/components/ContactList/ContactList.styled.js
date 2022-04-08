@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { theme } from "../../constants/Theme";
+import styled from 'styled-components';
+import { theme } from '../../constants/Theme';
 
 const {
   spacing,
@@ -38,5 +38,17 @@ export const Link = styled.a`
     outline: 2px solid ${accentColor};
     border-radius: 0.3em;
     outline-offset: 0.3em;
+  }
+`;
+
+export const ButtonsList = styled.ul`
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+`;
+
+export const ButtonsItem = styled.li`
+  &:not(:last-child) {
+    margin-right: ${spacing(2)};
   }
 `;

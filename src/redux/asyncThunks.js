@@ -9,6 +9,7 @@ import {
   logIn,
   logOut,
   getUserCurrent,
+  patchContact,
 } from './api/requests';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -102,8 +103,16 @@ export const addNewContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
   '/contacts/deleteContact',
-  async id => {
-    const result = await removeContact(id);
+  async contactId => {
+    const result = await removeContact(contactId);
+    return result.data;
+  }
+);
+
+export const editContact = createAsyncThunk(
+  '/contacts/editContact',
+  async ({ id, name, number }) => {
+    const result = await patchContact(id, name, number);
     return result.data;
   }
 );

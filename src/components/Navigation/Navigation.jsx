@@ -20,24 +20,23 @@ export default function Navigation() {
 
         {!isLoggedIn ?
           <>
-          <ListItem>
-            <NavigationLink to="/login">Login</NavigationLink>
-          </ListItem>
+            <ListItem>
+              <NavigationLink to="/login">Login</NavigationLink>
+            </ListItem>
 
-          <ListItem>
-            <NavigationLink to="/register">Register</NavigationLink>
-          </ListItem>
-        </>
-        :
-        <>
-          <ListItem>
-            <NavigationLink to="/contacts">Contacts</NavigationLink>
-          </ListItem>
+            <ListItem>
+              <NavigationLink to="/register">Register</NavigationLink>
+            </ListItem>
+          </> :
+          <>
+            <ListItem>
+              <NavigationLink to="/contacts">Contacts</NavigationLink>
+            </ListItem>
 
-          <ListItem>
-            <WelcomeUser>Welcome, {userName} </WelcomeUser><Button onClick={logOutUsr}>Log Out</Button>
-          </ListItem>
-        </>
+            <ListItem>
+              <WelcomeUser>Welcome, {userName} </WelcomeUser><Button onClick={logOutUsr}>Log Out</Button>
+            </ListItem>
+          </>
         }
       </NavList>
     </Nav>

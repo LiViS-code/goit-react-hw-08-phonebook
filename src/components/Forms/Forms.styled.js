@@ -22,7 +22,7 @@ export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: ${spacing(4)};
+  padding: ${spacing(4)} ${spacing(4)} ${spacing(1)} ${spacing(4)};
   border: 1px solid ${primaryColor};
   border-radius: ${spacing(2)};
   background-color: ${backgroundColorForm}; ;
@@ -51,6 +51,7 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   padding: ${spacing(1)} ${spacing(2)};
+  margin-bottom: ${spacing(4)};
   border: none;
   border-radius: ${spacing(2)};
   color: inherit;

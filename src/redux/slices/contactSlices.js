@@ -44,6 +44,7 @@ export const contactsSlice = createSlice({
       state.contacts = state.contacts.filter(
         contacts => contacts.id !== action.meta.arg
       );
+      console.log(action.meta.arg);
       state.loading = false;
     },
 

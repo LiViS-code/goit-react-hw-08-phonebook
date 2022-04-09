@@ -10,7 +10,6 @@ import {
   ButtonsItem,
 } from './ContactList.styled';
 import { Button } from '../Forms/Forms.styled';
-
 export default function ContactList({ contacts, filter, onDelete, toggleModal }) {
   let filterContacts = contacts;
 

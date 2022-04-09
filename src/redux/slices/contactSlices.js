@@ -40,10 +40,10 @@ export const contactsSlice = createSlice({
       state.loading = true;
     },
 
-    [deleteContact.fulfilled]: (state, { payload }) => {
-      console.log(payload.id);
-      const index = state.contacts.findIndex(user => user.id === payload.id);
-      state.contacts.splice(index, 1);
+    [deleteContact.fulfilled]: (state, action) => {
+      state.contacts = state.contacts.filter(
+        contacts => contacts.id !== action.meta.arg
+      );
       state.loading = false;
     },
 

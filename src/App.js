@@ -30,14 +30,7 @@ export default function App() {
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            path="/"
-            element={
-              <PublicRoute>
-                <HomePage />
-              </PublicRoute>
-            }
-          ></Route>
+          <Route path="/" element={<HomePage />}></Route>
           <Route
             path="login"
             element={

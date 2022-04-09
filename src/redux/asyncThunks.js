@@ -88,31 +88,31 @@ export const fetchCurrentUser = createAsyncThunk(
 export const fetchContacts = createAsyncThunk(
   '/contacts/getContacts',
   async () => {
-    const result = await getContacts();
-    return result.data;
+    const { data } = await getContacts();
+    return data;
   }
 );
 
 export const addNewContact = createAsyncThunk(
   '/contacts/addNewContact',
   async contactData => {
-    const result = await addContact(contactData);
-    return result.data;
+    const { data } = await addContact(contactData);
+    return data;
   }
 );
 
 export const deleteContact = createAsyncThunk(
   '/contacts/deleteContact',
   async contactId => {
-    const result = await removeContact(contactId);
-    return result.data;
+    const { data } = await removeContact(contactId);
+    return data;
   }
 );
 
 export const editContact = createAsyncThunk(
   '/contacts/editContact',
   async ({ id, name, number }) => {
-    const result = await patchContact(id, name, number);
-    return result.data;
+    const { data } = await patchContact(id, name, number);
+    return data;
   }
 );

@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './constants/Theme';
 import App from './App';
 import { PersistGate } from 'redux-persist/integration/react';
+import { ToastContainer } from 'react-toastify';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.render(
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
               <App />
+              <ToastContainer />
             </PersistGate>
           </Provider>
         </IconContext.Provider>

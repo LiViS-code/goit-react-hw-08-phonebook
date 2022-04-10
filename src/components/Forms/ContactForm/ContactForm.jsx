@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { ToastContainer } from "react-toastify";
 import { IconContext } from "react-icons";
 import { FcContacts, FcPhoneAndroid, FcAddDatabase } from "react-icons/fc";
 import { Form, Label, Input, Button } from "../Forms.styled";
@@ -80,7 +79,6 @@ export default function ContactForm({ onChangeState }) {
           <FcAddDatabase />
         </IconContext.Provider>
       </Button>
-      <ToastContainer />
     </Form>
   );
 }

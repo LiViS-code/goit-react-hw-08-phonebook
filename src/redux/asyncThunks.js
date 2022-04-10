@@ -30,7 +30,7 @@ export const signUpThunk = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      console.log(error);
+      toastMsg(error, 'error');
       return thunkAPI.rejectWithValue();
     }
   }
@@ -40,12 +40,11 @@ export const logInThunk = createAsyncThunk(
   '/users/login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await logIn(credentials);
-      token.set(data.token);
-      return data;
+      const result = await logIn(credentials);
+      token.set(result.data.token);
+      return result.data;
     } catch (error) {
-      toastMsg('Authorisation Error', 'warn');
-      console.log(error);
+      toastMsg(error, 'error');
       return thunkAPI.rejectWithValue();
     }
   }
@@ -59,7 +58,7 @@ export const logOutThunk = createAsyncThunk(
       token.unset();
       return;
     } catch (error) {
-      console.log(error);
+      toastMsg(error, 'error');
       return thunkAPI.rejectWithValue();
     }
   }
@@ -79,7 +78,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await getUserCurrent();
       return data;
     } catch (error) {
-      console.log(error);
+      toastMsg(error, 'error');
       return thunkAPI.rejectWithValue();
     }
   }
@@ -87,32 +86,52 @@ export const fetchCurrentUser = createAsyncThunk(
 
 export const fetchContacts = createAsyncThunk(
   '/contacts/getContacts',
-  async () => {
-    const { data } = await getContacts();
-    return data;
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await getContacts();
+      return data;
+    } catch (error) {
+      toastMsg(error, 'error');
+      return thunkAPI.rejectWithValue();
+    }
   }
 );
 
 export const addNewContact = createAsyncThunk(
   '/contacts/addNewContact',
-  async contactData => {
-    const { data } = await addContact(contactData);
-    return data;
+  async (contactData, thunkAPI) => {
+    try {
+      const { data } = await addContact(contactData);
+      return data;
+    } catch (error) {
+      toastMsg(error, 'error');
+      return thunkAPI.rejectWithValue();
+    }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   '/contacts/deleteContact',
-  async contactId => {
-    const { data } = await removeContact(contactId);
-    return data;
+  async (contactId, thunkAPI) => {
+    try {
+      const { data } = await removeContact(contactId);
+      return data;
+    } catch (error) {
+      toastMsg(error, 'error');
+      return thunkAPI.rejectWithValue();
+    }
   }
 );
 
 export const editContact = createAsyncThunk(
   '/contacts/editContact',
-  async ({ id, name, number }) => {
-    const { data } = await patchContact(id, name, number);
-    return data;
+  async ({ id, name, number }, thunkAPI) => {
+    try {
+      const { data } = await patchContact(id, name, number);
+      return data;
+    } catch (error) {
+      toastMsg(error, 'error');
+      return thunkAPI.rejectWithValue();
+    }
   }
 );

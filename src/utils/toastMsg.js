@@ -8,14 +8,13 @@ const toastMsg = (name, type) => {
       msg = `${name} was successfully added to contacts`;
       break;
     case 'warn':
-      if (name === 'Authorisation Error') {
-        msg = `${name}. Check if the data is correct.`;
-      } else {
-        msg = `${name} is alredy in contacts`;
-      }
+      msg = `${name} is alredy in contacts`;
       break;
     case 'info':
       msg = `${name} removed from contacts`;
+      break;
+    case 'error':
+      msg = `${name}. Check the correctness of the data.`;
       break;
     default:
       break;

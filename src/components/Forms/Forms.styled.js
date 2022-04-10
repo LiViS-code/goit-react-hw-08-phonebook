@@ -16,13 +16,13 @@ const {
 } = theme;
 
 export const Form = styled.form`
-  min-width: 300px;
-  max-width: 500px;
+  min-width: 200px;
+  max-width: 400px;
   margin: 0 auto ${spacing(4)};
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding: ${spacing(4)} ${spacing(4)} ${spacing(1)} ${spacing(4)};
+  padding: ${spacing(5)};
   border: 1px solid ${primaryColor};
   border-radius: ${spacing(2)};
   background-color: ${backgroundColorForm}; ;
@@ -51,7 +51,6 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   padding: ${spacing(1)} ${spacing(2)};
-  margin-bottom: ${spacing(4)};
   border: none;
   border-radius: ${spacing(2)};
   color: inherit;
@@ -72,5 +71,19 @@ export const Button = styled.button`
     border: 1px solid ${borderDisabledColor};
     background-color: ${backgroundDisabledColor};
     color: ${disabledColor};
+  }
+`;
+
+export const ButtonList = styled.ul`
+  display: flex;
+  padding-left: 0;
+  margin-top: 0;
+  list-style: none;
+  justify-content: center;
+`;
+
+export const ButtonListItem = styled.li`
+  &:not(:last-child) {
+    margin-right: ${spacing(4)};
   }
 `;
